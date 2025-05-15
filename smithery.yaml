@@ -1,0 +1,19 @@
+# Smithery configuration file: https://smithery.ai/docs/build/project-config
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - owmApiKey
+    properties:
+      owmApiKey:
+        type: string
+        description: OpenWeatherMap API key for accessing weather data
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({ command: './mcp-weather', env: { OWM_API_KEY: config.owmApiKey } })
+  exampleConfig:
+    owmApiKey: YOUR_OPENWEATHERMAP_API_KEY_HERE
