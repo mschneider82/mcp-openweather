@@ -1,7 +1,5 @@
 # MCP Weather Service
 
-[![smithery badge](https://smithery.ai/badge/@mschneider82/mcp-openweather)](https://smithery.ai/server/@mschneider82/mcp-openweather)
-
 A simple MCP service that provides current weather and 5-day forecast using the free OpenWeatherMap API.
 
 ## Features
@@ -16,7 +14,6 @@ A simple MCP service that provides current weather and 5-day forecast using the 
 - OpenWeatherMap API key
 
 ## Installation
-- Recommended installation method: installing via Smithery
 1. Get OpenWeatherMap API key from [https://openweathermap.org/api](https://openweathermap.org/api)
 2. Clone repository:
    ```bash
