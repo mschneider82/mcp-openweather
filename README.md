@@ -27,6 +27,14 @@ A simple MCP service that provides current weather and 5-day forecast using the 
    go build -o mcp-weather
    ```
 
+### Installing via Smithery
+
+To install MCP Weather Service for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@mschneider82/mcp-openweather):
+
+```bash
+npx -y @smithery/cli install @mschneider82/mcp-openweather --client claude
+```
+
 ## Configuration
 
 Set required environment variable:
