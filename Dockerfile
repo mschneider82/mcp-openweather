@@ -16,5 +16,6 @@ RUN go build -o mcp-weather main.go
 FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/mcp-weather .
+ENV OWM_API_KEY=""
 
 ENTRYPOINT ["./mcp-weather"]
