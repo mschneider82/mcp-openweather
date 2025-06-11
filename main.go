@@ -106,8 +106,22 @@ func weatherHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 	if !ok {
 		return nil, errors.New("city must be a string")
 	}
+
 	units, _ := request.Params.Arguments["units"].(string)
+	if units == "" {
+		units = os.Getenv("OWM_UNITS")
+		if units == "" {
+			units = "c" 
+		}
+	}
+	
 	lang, _ := request.Params.Arguments["lang"].(string)
+	if lang == "" {
+		lang = os.Getenv("OWM_LANG")
+		if lang == "" {
+			lang = "en" 
+		}
+	}
 
 	current, err := getCurrent(city, units, lang)
 	if err != nil {
@@ -117,7 +131,6 @@ func weatherHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 	if err != nil {
 		return nil, err
 	}
-
 	buf := bytes.Buffer{}
 	if err := weatherTemplate.Execute(&buf, current); err != nil {
 		return nil, err
@@ -125,7 +138,6 @@ func weatherHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 	if err := forecastTemplate.Execute(&buf, forecast); err != nil {
 		return nil, err
 	}
-
 	return mcp.NewToolResultText(fmt.Sprintf("%s", buf.String())), err
 }
 
